@@ -1,19 +1,45 @@
 <div class="card">
-        <table class="table table-hover">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Opciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Título</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Status</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% let i = 1 %>
+      <% tasks.forEach((task) => { %>
+      <tr>
+
+        <th scope="row"><%=  i++ %></th>
+        <td><%= task.title %></td>
+        <td><%= task.description %></td>
+        <td>
+          <a href="/change/<%= task._id%>">
+            <% if(!task.status){ %>
+            <button class="btn btn-warning">To-do</button>
+            <% }else{ %>
+            <button class="btn btn-success">Done!</button>
+            <% } %>
+          </a>
+        </td>
+        <td>
+          <a href="/edit/<%= task._id %>">
+            <button class="btn btn-info">Editar</button>
+          </a>
+          <a href="/delete/<%= task._id %>">
+            <button class="btn btn-danger">Eliminar</button>
+          </a>
+
+
+        </td>
+      </tr>
+      <% })%>
+
+    </tbody>
+  </table>
+
 </div>

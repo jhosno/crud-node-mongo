@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname,'public')));
 /* ***********************
  ******Middlewares*******
  *************************  */
+//Actulizado 
 app.use(logger('combined'))
 //es true porque solo vamos a recibir texto de los formularios 
 

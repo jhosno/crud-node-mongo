@@ -1,6 +1,22 @@
 <div class="card card-body ">
-        <h2>Nueva tarea</h2>
-        <form target="/add" method="POST">
+        <h2><%= action %></h2>
+    <% if (task) { %>
+        <form action="/update/<%= task.id %>" method="POST">
+            <div class="form-group">
+                <label for="title">Título</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= task.title %>">
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <input type="text" class="form-control" id="description" name="description" value="<%= task.description %>">
+            </div>
+            
+            <input type="submit" value="Enviar" class="btn btn-success btn-block">
+        </form>
+
+
+    <% }else{ %>
+        <form action="/add" method="POST">
             <div class="form-group">
                 <label for="title">Título</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Coloca el título de tu tarea">
@@ -12,4 +28,7 @@
             
             <input type="submit" value="Enviar" class="btn btn-success btn-block">
         </form>
+    <% } %>
+
+       
     </div>
